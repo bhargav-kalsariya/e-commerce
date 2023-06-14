@@ -8,6 +8,7 @@ const { initializePassword } = require("./middleware/passportlocal");
 const Passport = require("passport");
 const Session = require("express-session");
 const app = express();
+const flash = require('connect-flash');
 require("dotenv").config();
 
 // Module use for access modules
@@ -22,6 +23,7 @@ initializePassword(Passport)
 app.use(Session({ secret: 'passport' }))
 app.use(Passport.initialize())
 app.use(Passport.session())
+app.use(flash())
 
 // app routes
 

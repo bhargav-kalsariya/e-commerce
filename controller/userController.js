@@ -1,4 +1,5 @@
 const SignupModel = require("../models/singupSchema");
+const bcrypt = require("bcrypt");
 
 let userSignupRender = (req, res) => {
     res.render('signup')
@@ -31,12 +32,13 @@ let getUser = async (req, res) => {
 }
 
 let userLogout = (req, res) => {
+    req.flash('message', 'Logout Successfully');
     req.logout((err) => {
         if (err) {
             console.log(err);
         }
     });
-    res.send('logged out');
+    res.send(req.flash('message'))
 }
 
 let userUpdate = async (req, res) => {

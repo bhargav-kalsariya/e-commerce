@@ -3,7 +3,7 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, flashMessage } = require('../controller/userController');
 
 Route.get('/signup', userSignupRender);
 

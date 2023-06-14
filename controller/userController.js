@@ -24,7 +24,7 @@ let userSignup = async (req, res) => {
 }
 
 let userLogin = async (req, res) => {
-    let user = await SignupModel.findOne(username == req.body.username)
+    let user = await SignupModel.findOne({ username: req.body.username })
     if (!user) {
         console.log('can not find user')
     }

@@ -3,6 +3,6 @@ exports.authUser = (req, res, next) => {
         return next();
     }
     else {
-        res.redirect('/login')
+        res.render('login')
     }
 };

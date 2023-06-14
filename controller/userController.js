@@ -1,5 +1,4 @@
 const SignupModel = require("../models/singupSchema");
-const bcrypt = require("bcrypt");
 
 let userSignupRender = (req, res) => {
     res.render('signup')
@@ -24,22 +23,7 @@ let userSignup = async (req, res) => {
 }
 
 let userLogin = async (req, res) => {
-    let user = await SignupModel.findOne({ username: req.body.username })
-    if (!user) {
-        console.log('can not find user')
-    }
-    else {
-        try {
-            if (await bcrypt.compare(req.body.password, user.password)) {
-                res.render('index')
-            }
-            else {
-                res.status(404).send('Enter Valid Password')
-            }
-        } catch (error) {
-            res.status(500).send(error)
-        }
-    }
+    res.render('index')
 }
 
 let getUser = async (req, res) => {

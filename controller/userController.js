@@ -1,8 +1,6 @@
 const SignupModel = require("../models/singupSchema");
 const bcrypt = require("bcrypt");
 
-let salt = 10;
-
 let userSignupRender = (req, res) => {
     res.render('signup')
 }
@@ -17,22 +15,31 @@ let userSignup = async (req, res) => {
         res.send('username is already used by someone')
     }
     else {
-        bcrypt.hash(req.body.password, salt, async (err, hash) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                req.body.password = hash
-                let user = await SignupModel.create(req.body)
-                console.log(req.body);
-                res.render('index')
-            }
-        })
+        let hasedPassword = await bcrypt.hash(req.body.password, 10)
+        req.body.password = hasedPassword
+        let user = await SignupModel.create(req.body)
+        res.render('index')
+        console.log(user)
     }
 }
 
 let userLogin = async (req, res) => {
-    res.render('index')
+    let user = await SignupModel.findOne(username == req.body.username)
+    if (!user) {
+        console.log('can not find user')
+    }
+    else {
+        try {
+            if (await bcrypt.compare(req.body.password, user.password)) {
+                res.render('index')
+            }
+            else {
+                res.status(404).send('Enter Valid Password')
+            }
+        } catch (error) {
+            res.status(500).send(error)
+        }
+    }
 }
 
 let getUser = async (req, res) => {

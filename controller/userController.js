@@ -55,4 +55,8 @@ let userDelete = async (req, res) => {
     console.log('delete user successfully');
 }
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender }
+let categoriesRender = (req, res) => {
+    res.render('category');
+}
+
+module.exports = { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, categoriesRender }

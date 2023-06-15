@@ -13,6 +13,8 @@ Route.get('/profile', authUser, getUser);
 
 Route.get('/logout', userLogout);
 
+Route.get('/categories', categoriesRender);
+
 Route.post('/signup', userSignup);
 
 Route.post('/login', Passport.authenticate('local'), userLogin)

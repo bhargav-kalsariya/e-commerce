@@ -1,5 +1,6 @@
 const SignupModel = require("../models/singupSchema");
 const bcrypt = require("bcrypt");
+const { Category } = require("../models/categorySchema");
 
 let userSignupRender = (req, res) => {
     res.render('signup')
@@ -59,4 +60,11 @@ let categoriesRender = (req, res) => {
     res.render('category');
 }
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, categoriesRender }
+let CategoryCreate = async (req, res) => {
+    let category = await Category.create(req.body);
+    res.send(category);
+    console.log('category created successfully');
+}
+
+
+module.exports = { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate }

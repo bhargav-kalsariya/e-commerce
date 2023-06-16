@@ -3,7 +3,9 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender } = require('../controller/userController');
+
+Route.get('/', indexRender);
 
 Route.get('/signup', userSignupRender);
 

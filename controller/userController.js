@@ -2,6 +2,10 @@ const SignupModel = require("../models/singupSchema");
 const bcrypt = require("bcrypt");
 const { Category } = require("../models/categorySchema");
 
+let indexRender = (req, res) => {
+    res.render('index')
+}
+
 let userSignupRender = (req, res) => {
     res.render('signup')
 }
@@ -67,4 +71,4 @@ let CategoryCreate = async (req, res) => {
 }
 
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate }
+module.exports = { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender }

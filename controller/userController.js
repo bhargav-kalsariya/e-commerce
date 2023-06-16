@@ -2,18 +2,17 @@ const SignupModel = require("../models/singupSchema");
 const bcrypt = require("bcrypt");
 const { Category } = require("../models/categorySchema");
 
+//                                              index page controller                                                   // 
+
 let indexRender = (req, res) => {
     res.render('index')
 }
 
+//                                              signup page controller                                                  // 
+
 let userSignupRender = (req, res) => {
     res.render('signup')
 }
-
-let userLoginRender = (req, res) => {
-    res.render('login')
-}
-
 let userSignup = async (req, res) => {
     let user = await SignupModel.findOne({ username: req.body.username })
     if (user) {
@@ -28,13 +27,22 @@ let userSignup = async (req, res) => {
     }
 }
 
+//                                              login page controller                                                   // 
+
+let userLoginRender = (req, res) => {
+    res.render('login')
+}
 let userLogin = async (req, res) => {
     res.render('index')
 }
 
-let getUser = async (req, res) => {
-    res.send(req.user)
+//                                              profile page controller                                                 // 
+
+let UserProfile = async (req, res) => {
+    res.render('profile')
 }
+
+//                                              logout page controller                                                  // 
 
 let userLogout = (req, res) => {
     req.flash('message', 'Logout Successfully');
@@ -43,8 +51,11 @@ let userLogout = (req, res) => {
             console.log(err);
         }
     });
-    res.send(req.flash('message'))
+    // res.send(req.flash('message'))
+    res.redirect('/');
 }
+
+//                                              user update and delete controller                                       //
 
 let userUpdate = async (req, res) => {
     let { id } = req.params;
@@ -52,7 +63,6 @@ let userUpdate = async (req, res) => {
     res.status(200).send(userUpdate);
     console.log('update user successfully');
 }
-
 let userDelete = async (req, res) => {
     let { id } = req.params;
     let userDelete = await SignupModel.findByIdAndDelete(id);
@@ -60,15 +70,22 @@ let userDelete = async (req, res) => {
     console.log('delete user successfully');
 }
 
+//                                              category controller                                                     //
+
 let categoriesRender = (req, res) => {
     res.render('category');
 }
-
 let CategoryCreate = async (req, res) => {
     let category = await Category.create(req.body);
     res.send(category);
     console.log('category created successfully');
 }
 
+//                                              category controller                                                     //
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, getUser, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender }
+let aboutPageRender = (req, res) => {
+    res.render('about-us')
+}
+
+
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfile, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender }

@@ -3,7 +3,7 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, UserProfile, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, UserProfile, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender,contactPageRender } = require('../controller/userController');
 
 //                                          index page render routes                         //
 
@@ -32,9 +32,10 @@ Route.get('/logout', userLogout);
 Route.get('/addCategory', categoriesRender);
 Route.post('/addCategory', authUser, CategoryCreate);
 
-//                                          about page render routes                         //
+//                                          about , contact  page render routes                         //
 
 Route.get('/about-us', aboutPageRender);
+Route.get('/contact-us', contactPageRender);
 
 //                                          other page render routes                         //
 

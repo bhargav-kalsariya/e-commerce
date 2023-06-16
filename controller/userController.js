@@ -81,11 +81,14 @@ let CategoryCreate = async (req, res) => {
     console.log('category created successfully');
 }
 
-//                                              category controller                                                     //
+//                                              about and contact page controller                                                     //
 
 let aboutPageRender = (req, res) => {
     res.render('about-us')
 }
+let contactPageRender = (req, res) => {
+    res.render('contact-us')
+}
 
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfile, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender }
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfile, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender }

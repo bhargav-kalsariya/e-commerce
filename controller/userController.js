@@ -2,13 +2,13 @@ const SignupModel = require("../models/singupSchema");
 const bcrypt = require("bcrypt");
 const { Category } = require("../models/categorySchema");
 
-//                                              index page controller                                                   // 
+//                       index page controller                                  // 
 
 let indexRender = (req, res) => {
     res.render('index')
 }
 
-//                                              signup page controller                                                  // 
+//                       signup page controller                               // 
 
 let userSignupRender = (req, res) => {
     res.render('signup')
@@ -27,7 +27,7 @@ let userSignup = async (req, res) => {
     }
 }
 
-//                                              login page controller                                                   // 
+//                        login page controller                              // 
 
 let userLoginRender = (req, res) => {
     res.render('login')
@@ -36,15 +36,15 @@ let userLogin = async (req, res) => {
     res.render('index')
 }
 
-//                                              profile page controller                                                 // 
+//                    profile page controller                             // 
 
-let UserProfile = async (req, res) => {
+let UserProfileRender = async (req, res) => {
     res.render('profile')
 }
 
-//                                              logout page controller                                                  // 
+//                    logout page controller                               // 
 
-let userLogout = (req, res) => {
+let userLogoutRender = (req, res) => {
     req.flash('message', 'Logout Successfully');
     req.logout((err) => {
         if (err) {
@@ -55,7 +55,7 @@ let userLogout = (req, res) => {
     res.redirect('/');
 }
 
-//                                              user update and delete controller                                       //
+//                   user update and delete controller                         //
 
 let userUpdate = async (req, res) => {
     let { id } = req.params;
@@ -70,7 +70,7 @@ let userDelete = async (req, res) => {
     console.log('delete user successfully');
 }
 
-//                                              category controller                                                     //
+//                      category controller                              //
 
 let categoriesRender = (req, res) => {
     res.render('category');
@@ -81,7 +81,7 @@ let CategoryCreate = async (req, res) => {
     console.log('category created successfully');
 }
 
-//                                              about and contact page controller                                                     //
+//                     about and contact page controller                          //
 
 let aboutPageRender = (req, res) => {
     res.render('about-us')
@@ -91,4 +91,4 @@ let contactPageRender = (req, res) => {
 }
 
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfile, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender }
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender }

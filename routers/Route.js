@@ -3,41 +3,26 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, UserProfile, userLogout, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender,contactPageRender } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender } = require('../controller/userController');
 
-//                                          index page render routes                         //
+//          pages render routes             //
 
 Route.get('/', indexRender);
-
-//                                          signup page render routes                        //
-
 Route.get('/signup', userSignupRender);
-Route.post('/signup', userSignup);
-
-//                                          login page render routes                         //
-
 Route.get('/login', userLoginRender);
-Route.post('/login', Passport.authenticate('local'), userLogin)
-
-//                                          profile page render routes                       //
-
-Route.get('/profile', authUser, UserProfile);
-
-//                                          logout page render routes                        //
-
-Route.get('/logout', userLogout);
-
-//                                          category page render routes                          //
-
 Route.get('/addCategory', categoriesRender);
-Route.post('/addCategory', authUser, CategoryCreate);
-
-//                                          about , contact  page render routes                         //
-
 Route.get('/about-us', aboutPageRender);
 Route.get('/contact-us', contactPageRender);
+Route.get('/profile', authUser, UserProfileRender);
+Route.get('/logout', userLogoutRender);
 
-//                                          other page render routes                         //
+//           post page route               //
+
+Route.post('/signup', userSignup);
+Route.post('/login', Passport.authenticate('local'), userLogin)
+Route.post('/addCategory', authUser, CategoryCreate);
+
+//        update and delete  page route       //
 
 Route.patch('/update/:id', userUpdate);
 Route.delete('/delete/:id', userDelete)

@@ -95,9 +95,21 @@ let contactPageRender = (req, res) => {
 let UserShopRender = (req, res) => {
     res.render('shop')
 }
-
 let blogPageRender = (req, res) => {
     res.render('blog')
 }
+let ShopRightSideRender = (req, res) => {
+    res.render('shop-right-sidebar')
+}
+let ShopListLeftSideRender = (req, res) => {
+    res.render('shop-list-left')
+}
+let ShopListRightSideRender = (req, res) => {
+    res.render('shop-list-right')
+}
+let ShopFullWidthRender = (req, res) => {
+    res.render('shop-fullwidth')
+}
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender }
+
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender }

@@ -3,7 +3,7 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender } = require('../controller/userController');
 
 //          pages render routes             //
 
@@ -17,6 +17,10 @@ Route.get('/profile', authUser, UserProfileRender);
 Route.get('/logout', userLogoutRender);
 Route.get('/shop', UserShopRender);
 Route.get('/blog', blogPageRender);
+Route.get('/shop-right-sidebar', ShopRightSideRender)
+Route.get('/shop-list-left-sidebar', ShopListLeftSideRender)
+Route.get('/shop-list-right-sidebar', ShopListRightSideRender)
+Route.get('/shop-full-width', ShopFullWidthRender)
 
 //           post page route               //
 

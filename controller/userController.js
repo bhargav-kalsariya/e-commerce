@@ -90,5 +90,14 @@ let contactPageRender = (req, res) => {
     res.render('contact-us')
 }
 
+//                     shop & blog  controller                          //
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender }
+let UserShopRender = (req, res) => {
+    res.render('shop')
+}
+
+let blogPageRender = (req, res) => {
+    res.render('blog')
+}
+
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender }

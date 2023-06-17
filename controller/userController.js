@@ -90,7 +90,7 @@ let contactPageRender = (req, res) => {
     res.render('contact-us')
 }
 
-//                     shop & blog  controller                          //
+//                     shop  controller                          //
 
 let UserShopRender = (req, res) => {
     res.render('shop')
@@ -110,6 +110,35 @@ let ShopListRightSideRender = (req, res) => {
 let ShopFullWidthRender = (req, res) => {
     res.render('shop-fullwidth')
 }
+let ProductsRender = (req, res) => {
+    res.render('product-details')
+}
+let variableProductsRender = (req, res) => {
+    res.render('variable-product-details')
+}
+let ExternalProductsRender = (req, res) => {
+    res.render('external-product-details')
+}
+let GalleryProductsRender = (req, res) => {
+    res.render('gallery-product-details')
+}
+let CountdownProductsRender = (req, res) => {
+    res.render('countdown-product-details')
+}
+let Error404Render = (req, res) => {
+    res.render('error-404')
+}
+let ComparePagesRender = (req, res) => {
+    res.render('compare')
+}
+let CartPageRender = (req, res) => {
+    res.render('cart')
+}
+let CheckoutPageRender = (req, res) => {
+    res.render('checkout')
+}
+let WishlistPageRender = (req, res) => {
+    res.render('wishlist')
+}
 
-
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender }
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender }

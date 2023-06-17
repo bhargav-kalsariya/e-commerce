@@ -3,7 +3,7 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender } = require('../controller/userController');
 
 //          pages render routes             //
 
@@ -21,6 +21,16 @@ Route.get('/shop-right-sidebar', ShopRightSideRender)
 Route.get('/shop-list-left-sidebar', ShopListLeftSideRender)
 Route.get('/shop-list-right-sidebar', ShopListRightSideRender)
 Route.get('/shop-full-width', ShopFullWidthRender)
+Route.get('/products', ProductsRender)
+Route.get('/variable-products', variableProductsRender)
+Route.get('/external-products', ExternalProductsRender)
+Route.get('/gallery-products', GalleryProductsRender)
+Route.get('/countdown-products', CountdownProductsRender)
+Route.get('/error-404', Error404Render)
+Route.get('/compare', ComparePagesRender)
+Route.get('/cart', CartPageRender)
+Route.get('/checkout', CheckoutPageRender)
+Route.get('/wishlist', WishlistPageRender)
 
 //           post page route               //
 

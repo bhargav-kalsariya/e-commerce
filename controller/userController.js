@@ -95,9 +95,6 @@ let contactPageRender = (req, res) => {
 let UserShopRender = (req, res) => {
     res.render('shop')
 }
-let blogPageRender = (req, res) => {
-    res.render('blog')
-}
 let ShopRightSideRender = (req, res) => {
     res.render('shop-right-sidebar')
 }
@@ -141,4 +138,34 @@ let WishlistPageRender = (req, res) => {
     res.render('wishlist')
 }
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender }
+//                     blog  controller                          //
+
+let blogPageRender = (req, res) => {
+    res.render('blog')
+}
+let BlogListRightRender = (req, res) => {
+    res.render('blog-list-right-sidebar')
+}
+let BlogListFullwidthRender = (req, res) => {
+    res.render('blog-list-fullwidth')
+}
+let BlogGridRender = (req, res) => {
+    res.render('blog-grid')
+}
+let BlogGridRightRender = (req, res) => {
+    res.render('blog-grid-right-sidebar')
+}
+let BlogGridFullwidthRender = (req, res) => {
+    res.render('blog-grid-fullwidth')
+}
+let BlogDetailsRender = (req, res) => {
+    res.render('blog-details-sidebar')
+}
+let BlogDetailsFullWidthRender = (req, res) => {
+    res.render('blog-details-fullwidth')
+}
+let BlogFAQRender = (req, res) => {
+    res.render('frequently-questions')
+}
+
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender }

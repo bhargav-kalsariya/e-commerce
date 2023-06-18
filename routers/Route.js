@@ -3,7 +3,7 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogFAQRender } = require('../controller/userController');
 
 //          pages render routes             //
 
@@ -31,6 +31,14 @@ Route.get('/compare', ComparePagesRender)
 Route.get('/cart', CartPageRender)
 Route.get('/checkout', CheckoutPageRender)
 Route.get('/wishlist', WishlistPageRender)
+Route.get('/blog-list-right', BlogListRightRender)
+Route.get('/blog-list-fullwidth', BlogListFullwidthRender)
+Route.get('/blog-grid', BlogGridRender)
+Route.get('/blog-grid-right', BlogGridRightRender)
+Route.get('/blog-grid-fullwidth', BlogGridFullwidthRender)
+Route.get('/blog-details', BlogDetailsRender)
+Route.get('/blog-details-fullwidth', BlogGridFullwidthRender)
+Route.get('/FAQ', BlogFAQRender)
 
 //           post page route               //
 

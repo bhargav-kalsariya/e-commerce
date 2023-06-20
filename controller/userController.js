@@ -91,6 +91,18 @@ let getCategory = async (req, res) => {
     let category = await Category.find();
     res.send(category);
 }
+let deleteCategory = async (req, res) => {
+    let { id } = req.params;
+    let deleteCategory = await Category.findByIdAndDelete(id);
+    res.send('Delete Category' + deleteCategory);
+    console.log('Category successfully deleted')
+}
+let updateCategory = async (req, res) => {
+    let { id } = req.params;
+    let updateCategory = await Category.findByIdAndUpdate(id, req.body);
+    res.send('Update Category' + updateCategory);
+    console.log('Category Updated Successfully');
+}
 
 //      products page controller       //
 
@@ -111,6 +123,18 @@ let productCreate = async (req, res) => {
 let getProduct = async (req, res) => {
     let product = await Product.find();
     res.send(product);
+}
+let deleteProduct = async (req, res) => {
+    let { id } = req.params;
+    let deleteProduct = await Product.findByIdAndDelete(id);
+    res.send('Delete Product' + deleteProduct);
+    console.log('Product deleted successfully')
+}
+let updateProduct = async (req, res) => {
+    let { id } = req.params;
+    let updateProduct = await Product.findByIdAndUpdate(id, req.body)
+    res.send('Update Product' + updateProduct);
+    console.log('Product Updated successfully');
 }
 
 //     about and contact page controller        //
@@ -200,4 +224,4 @@ let BlogFAQRender = (req, res) => {
     res.render('frequently-questions')
 }
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender, productsPageRender, productCreate, getProduct, getCategory }
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender, productsPageRender, productCreate, getProduct, getCategory, deleteCategory, deleteProduct, updateProduct, updateCategory }

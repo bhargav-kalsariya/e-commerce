@@ -3,7 +3,7 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogFAQRender, productsPageRender, productCreate, getProduct, getCategory } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogFAQRender, productsPageRender, productCreate, getProduct, getCategory, deleteCategory, deleteProduct, updateProduct, updateCategory } = require('../controller/userController');
 
 //          pages render routes             //
 
@@ -52,6 +52,10 @@ Route.post('/addProduct', productCreate)
 
 //        update and delete  page route       //
 
+Route.delete('/deleteCategory/:id', deleteCategory)
+Route.delete('/deleteProduct/:id', deleteProduct)
+Route.patch('/updateProduct/:id', updateProduct)
+Route.patch('/updateCategory/:id', updateCategory)
 Route.patch('/update/:id', userUpdate);
 Route.delete('/delete/:id', userDelete)
 

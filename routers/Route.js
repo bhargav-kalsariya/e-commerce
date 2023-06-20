@@ -3,7 +3,7 @@ const Route = Router()
 const Passport = require('passport');
 const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogFAQRender } = require('../controller/userController');
+const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogFAQRender, productsPageRender, productCreate, getProduct, getCategory } = require('../controller/userController');
 
 //          pages render routes             //
 
@@ -39,12 +39,16 @@ Route.get('/blog-grid-fullwidth', BlogGridFullwidthRender)
 Route.get('/blog-details', BlogDetailsRender)
 Route.get('/blog-details-fullwidth', BlogGridFullwidthRender)
 Route.get('/FAQ', BlogFAQRender)
+Route.get('/addProduct', productsPageRender)
+Route.get('/getProduct', getProduct)
+Route.get('/getCategory', getCategory)
 
 //           post page route               //
 
 Route.post('/signup', userSignup);
-Route.post('/login', Passport.authenticate('local'), userLogin)
+Route.post('/login', Passport.authenticate('local'), userLogin);
 Route.post('/addCategory', authUser, CategoryCreate);
+Route.post('/addProduct', productCreate)
 
 //        update and delete  page route       //
 

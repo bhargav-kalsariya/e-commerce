@@ -1,6 +1,7 @@
 const SignupModel = require("../models/singupSchema");
 const bcrypt = require("bcrypt");
 const { Category } = require("../models/categorySchema");
+const { Product } = require("../models/productSchema");
 
 //       index page controller          // 
 
@@ -76,9 +77,40 @@ let categoriesRender = (req, res) => {
     res.render('category');
 }
 let CategoryCreate = async (req, res) => {
-    let category = await Category.create(req.body);
+    let categories = await Category.findOne({ name: req.body.name });
+    if (!categories) {
+        let category = await Category.create(req.body);
+        res.send(category);
+        console.log('category created successfully');
+    }
+    else {
+        res.send('category already exists')
+    }
+}
+let getCategory = async (req, res) => {
+    let category = await Category.find();
     res.send(category);
-    console.log('category created successfully');
+}
+
+//      products page controller       //
+
+let productsPageRender = (req, res) => {
+    res.render('products')
+}
+let productCreate = async (req, res) => {
+    let product = await Product.findOne({ name: req.body.name })
+    if (!product) {
+        let CreateProduct = await Product.create(req.body);
+        console.log(CreateProduct)
+        res.send(CreateProduct)
+    }
+    else {
+        res.send('Product Already Created');
+    }
+}
+let getProduct = async (req, res) => {
+    let product = await Product.find();
+    res.send(product);
 }
 
 //     about and contact page controller        //
@@ -168,4 +200,4 @@ let BlogFAQRender = (req, res) => {
     res.render('frequently-questions')
 }
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender }
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, categoriesRender, CategoryCreate, indexRender, aboutPageRender, contactPageRender, UserShopRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender, productsPageRender, productCreate, getProduct, getCategory }

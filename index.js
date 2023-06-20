@@ -20,7 +20,11 @@ app.set('views' + __dirname + 'views')
 app.use(express.urlencoded({ extended: true }));
 dbconnect();
 initializePassword(Passport)
-app.use(Session({ secret: 'passport' }))
+app.use(Session({
+  secret: 'passport',
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(Passport.initialize())
 app.use(Passport.session())
 app.use(flash())

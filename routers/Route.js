@@ -10,7 +10,6 @@ const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLo
 Route.get('/', indexRender);
 Route.get('/signup', userSignupRender);
 Route.get('/login', userLoginRender);
-Route.get('/addCategory', categoriesRender);
 Route.get('/about-us', aboutPageRender);
 Route.get('/contact-us', contactPageRender);
 Route.get('/profile', authUser, UserProfileRender);
@@ -41,21 +40,17 @@ Route.get('/blog-details-fullwidth', BlogGridFullwidthRender)
 Route.get('/FAQ', BlogFAQRender)
 Route.get('/addProduct', productsPageRender)
 Route.get('/getProduct', getProduct)
-Route.get('/getCategory', getCategory)
 
 //           post page route               //
 
 Route.post('/signup', userSignup);
 Route.post('/login', Passport.authenticate('local'), userLogin);
-Route.post('/addCategory', authUser, CategoryCreate);
 Route.post('/addProduct', productCreate)
 
 //        update and delete  page route       //
 
-Route.delete('/deleteCategory/:id', deleteCategory)
 Route.delete('/deleteProduct/:id', deleteProduct)
 Route.patch('/updateProduct/:id', updateProduct)
-Route.patch('/updateCategory/:id', updateCategory)
 Route.patch('/update/:id', userUpdate);
 Route.delete('/delete/:id', userDelete)
 

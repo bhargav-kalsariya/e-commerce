@@ -15,7 +15,7 @@ let productCreate = async (req, res) => {
     }
 }
 let getProduct = async (req, res) => {
-    let product = await Product.find();
+    let product = await Product.findById(req.params.id).populate('category');
     res.send(product);
 }
 let deleteProduct = async (req, res) => {

@@ -3,7 +3,8 @@
 const express = require("express");
 const dbconnect = require("./config/dbconnect");
 const Route = require("./routers/Route");
-const route = require("./routers/Category");
+const CategoryRoute = require("./routers/CategoryRoute");
+const ProductRoute = require("./routers/ProductRoute");
 const ejs = require("ejs");
 const { initializePassword } = require("./middleware/passportlocal");
 const Passport = require("passport");
@@ -33,7 +34,8 @@ app.use(flash())
 // app routes
 
 app.use("/", Route);
-app.use('/', route)
+app.use('/', CategoryRoute)
+app.use('/', ProductRoute)
 
 // listening port
 

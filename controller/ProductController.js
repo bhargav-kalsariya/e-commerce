@@ -3,6 +3,7 @@ const { Product } = require("../models/productSchema")
 let productsPageRender = (req, res) => {
     res.render('products')
 }
+
 let productCreate = async (req, res) => {
     let product = await Product.findOne({ name: req.body.name })
     if (!product) {
@@ -14,20 +15,23 @@ let productCreate = async (req, res) => {
         res.send('Product Already Created');
     }
 }
+
 let getProduct = async (req, res) => {
     let product = await Product.findById(req.params.id).populate('category');
     res.send(product);
 }
+
 let deleteProduct = async (req, res) => {
     let { id } = req.params;
     let deleteProduct = await Product.findByIdAndDelete(id);
-    res.send('Delete Product' + deleteProduct);
+    res.send('Delete Product ' + deleteProduct);
     console.log('Product deleted successfully')
 }
+
 let updateProduct = async (req, res) => {
     let { id } = req.params;
     let updateProduct = await Product.findByIdAndUpdate(id, req.body)
-    res.send('Update Product' + updateProduct);
+    res.send('Update Product ' + updateProduct);
     console.log('Product Updated successfully');
 }
 

@@ -1,3 +1,4 @@
+const { Category } = require("../models/categorySchema")
 const { Product } = require("../models/productSchema")
 
 let productsPageRender = (req, res) => {
@@ -5,6 +6,11 @@ let productsPageRender = (req, res) => {
 }
 
 let productCreate = async (req, res) => {
+    let category = await Category.findById(req.body.category);
+    console.log(category);
+    if(!category){
+        res.send('No category found for category ' + req.body.category);
+    }
     let product = await Product.findOne({ name: req.body.name })
     if (!product) {
         let CreateProduct = await Product.create(req.body);

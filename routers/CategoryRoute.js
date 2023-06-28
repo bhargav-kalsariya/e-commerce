@@ -6,7 +6,7 @@ let CategoryRoute = Router();
 
 CategoryRoute.get('/addCategory', categoriesRender);
 CategoryRoute.get('/getCategory', getCategory)
-CategoryRoute.post('/addCategory', authUser, CategoryCreate);
+CategoryRoute.post('/addCategory', CategoryCreate);
 CategoryRoute.delete('/deleteCategory/:id', deleteCategory)
 CategoryRoute.patch('/updateCategory/:id', updateCategory)
 

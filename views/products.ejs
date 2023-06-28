@@ -10,7 +10,7 @@
 
 <body>
     <h1>Add Product</h1>
-    <form action="/addproduct" method="post">
+    <form action="/addProduct" method="post">
         Product Image : <input type="text" name="image" id=""><br><br>
         Product Name : <input type="text" name="name" id=""><br><br>
         Product Prize : <input type="text" name="prize" id=""><br><br>
@@ -18,8 +18,23 @@
         Product Rating : <input type="number" name="rating" id=""><br><br>
         Product Featured : <input type="text" name="isFeatured" id=""><br><br>
         product Create Date : <input type="date" name="dateCreated" id=""><br><br>
-        Product Category : <input type="text" name="category" id=""><br><br>
+        Product Category : <select name="" id="selectCategory"></select><br><br>
         CountInStock : <input type="text" name="countInStock" id=""><br><br>
+        <script>
+            let selectCategory = async () => {
+                let reqCategory = await fetch('http://localhost:4545/getCategory')
+                let resCategory = await reqCategory.json()
+                let category = ``;
+                for (let i = 0; i < resCategory.length; i++) {
+                    let categoryId = resCategory[i]._id;
+                    let categoryName = resCategory[i].name;
+                    category += `<option value="${categoryId}">${categoryName}</option>`;
+                }
+                document.getElementById('selectCategory').innerHTML = category;
+                console.log(category);
+            }
+            selectCategory();
+        </script>
         Submit Product Here : <input type="submit" name="" id="">
     </form>
 </body>

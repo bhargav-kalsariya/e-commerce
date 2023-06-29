@@ -6,20 +6,9 @@ let productsPageRender = (req, res) => {
 }
 
 let productCreate = async (req, res) => {
-    let category = await Category.findById(req.body.category);
-    console.log(category);
-    if(!category){
-        res.send('No category found for category ' + req.body.category);
-    }
-    let product = await Product.findOne({ name: req.body.name })
-    if (!product) {
-        let CreateProduct = await Product.create(req.body);
-        console.log(CreateProduct)
-        res.send(CreateProduct)
-    }
-    else {
-        res.send('Product Already Created');
-    }
+    let CreateProduct = await Product.create(req.body);
+    console.log(CreateProduct);
+    res.send(CreateProduct)
 }
 
 let getProduct = async (req, res) => {

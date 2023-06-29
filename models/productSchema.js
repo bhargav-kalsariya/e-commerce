@@ -9,18 +9,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    richDescription: {
-        type: String,
-        default: "",
-    },
     image: {
-        type: String,
-        default: "",
-    },
-    images: [{
-        type: String,
-    }],
-    brand: {
         type: String,
         default: "",
     },
@@ -42,10 +31,6 @@ const productSchema = new mongoose.Schema({
     rating: {
         type: Number,
         default: 0,
-    },
-    numReviews: {
-        type: Number,
-        default: 0
     },
     isFeatured: {
         type: Boolean,

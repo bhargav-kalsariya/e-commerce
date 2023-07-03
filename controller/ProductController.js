@@ -12,7 +12,13 @@ let productCreate = async (req, res) => {
 }
 
 let getProduct = async (req, res) => {
-    let product = await Product.findById(req.params.id).populate('category');
+    let product = await Product.find().populate('category');
+    try {
+        let products = await Product.find();
+        res.render('products', { products });
+    } catch (error) {
+        console.log(error);
+    }
     res.send(product);
 }
 

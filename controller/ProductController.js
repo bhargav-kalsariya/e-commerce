@@ -12,14 +12,13 @@ let productCreate = async (req, res) => {
 }
 
 let getProduct = async (req, res) => {
-    let product = await Product.find().populate('category');
+    await Product.find().populate('category');
     try {
         let products = await Product.find();
-        res.render('products', { products });
+        res.render('shop', { products });
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
     }
-    res.send(product);
 }
 
 let deleteProduct = async (req, res) => {

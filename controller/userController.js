@@ -87,8 +87,14 @@ let contactPageRender = (req, res) => {
 
 //      shop  controller          //
 
-let UserShopRender = (req, res) => {
-    res.render('shop')
+let UserShopRender = async (req, res) => {
+    await Product.find().populate('category');
+    try {
+        let products = await Product.find();
+        res.render('shop', { products });
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 let ShopRightSideRender = (req, res) => {
     res.render('shop-right-sidebar')

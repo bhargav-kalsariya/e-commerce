@@ -5,6 +5,7 @@ const ProductRoute = Router();
 
 ProductRoute.get('/addProduct', productsPageRender)
 ProductRoute.get('/getProduct', getProduct)
+ProductRoute.get('/AllProduct', getProduct)
 ProductRoute.post('/addProduct', productCreate)
 ProductRoute.delete('/deleteProduct/:id', deleteProduct)
 ProductRoute.patch('/updateProduct/:id', updateProduct)

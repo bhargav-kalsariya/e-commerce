@@ -6,9 +6,7 @@ exports.initializePassword = (Passport) => {
     Passport.use(new LocalStategy(async (username, password, done) => {
         try {
             let user = await SignupModel.findOne({ username });
-            console.log(await bcrypt.compare(password, user.password));
             if (!user || !(await bcrypt.compare(password, user.password))) {
-                console.log('username and password are incorrect')
                 return done(null, false);
             }
             return done(null, user);

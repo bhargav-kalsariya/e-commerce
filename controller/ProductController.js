@@ -8,7 +8,7 @@ let productsPageRender = (req, res) => {
 let productCreate = async (req, res) => {
     let CreateProduct = await Product.create(req.body);
     console.log(CreateProduct);
-    res.send(CreateProduct)
+    res.redirect('/shop');
 }
 
 let getProduct = async (req, res) => {
@@ -19,6 +19,11 @@ let getProduct = async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
+}
+
+let AtoZproductsSorting = async (req, res) => {
+    let AtoZproductsSorting = await Product.find({ order: [['name', 'ASC']] });
+    res.render('shop', { AtoZproductsSorting })
 }
 
 let deleteProduct = async (req, res) => {
@@ -35,4 +40,4 @@ let updateProduct = async (req, res) => {
     console.log('Product Updated successfully');
 }
 
-module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender }
+module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, AtoZproductsSorting }

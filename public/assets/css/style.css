@@ -7407,3 +7407,8 @@ mark {
   justify-content: center;
   margin: 200px 0;
 }
+
+.product-image-1 , .product-image-2{
+  height: 180px !important;
+  object-fit: cover;
+}

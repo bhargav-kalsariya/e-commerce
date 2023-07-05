@@ -21,6 +21,20 @@ let getProduct = async (req, res) => {
         console.log(error.message);
     }
 }
+let getProductCategoryWise = async (req, res) => {
+    const { category } = req.params;
+
+    try {
+        const products = await Product.find({ category });
+        let categories = await Category.find();
+        res.render('shop', { products, categories });
+        // console.log(products);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).send('Internal Server Error');
+    }
+};
+
 
 let AtoZproductsSorting = async (req, res) => {
     let AtoZproductsSorting = await Product.find({ order: [['name', 'ASC']] });
@@ -41,4 +55,4 @@ let updateProduct = async (req, res) => {
     console.log('Product Updated successfully');
 }
 
-module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, AtoZproductsSorting }
+module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, AtoZproductsSorting, getProductCategoryWise }

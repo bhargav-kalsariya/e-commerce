@@ -32,8 +32,23 @@
 
 <body>
 
-    <h1>Product List</h1>
-    
-</body>
+    <body>
+        <h1>Product List</h1>
+        <h2>Products in the Category:
+        </h2>
+        <div class="product-container">
+            <% products.forEach(function(product) { %>
+                <div class="product-box">
+                    <img class="product-image" src="<%= product.image %>" alt="<%= product.name %>">
+                    <h2>
+                        <%= product.name %>
+                    </h2>
+                    <p>Price: $<%= product.price %>
+                    </p>
+                </div>
+                <% }); %>
+        </div>
+
+    </body>
 
 </html>

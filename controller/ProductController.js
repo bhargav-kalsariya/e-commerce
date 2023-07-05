@@ -12,7 +12,7 @@ let productCreate = async (req, res) => {
 }
 
 let getProduct = async (req, res) => {
-    await Product.find().populate('category');
+    // await Product.find().populate('category');
     try {
         let categories = await Category.find();
         let products = await Product.find();
@@ -22,6 +22,7 @@ let getProduct = async (req, res) => {
     }
 }
 let getProductCategoryWise = async (req, res) => {
+
     const { category } = req.params;
 
     try {

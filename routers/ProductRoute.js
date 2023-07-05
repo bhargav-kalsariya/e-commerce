@@ -4,9 +4,8 @@ const { productsPageRender, getProduct, productCreate, deleteProduct, updateProd
 const ProductRoute = Router();
 
 ProductRoute.get('/addProduct', productsPageRender)
-ProductRoute.get('/getProduct', getProduct)
+ProductRoute.get('/shop', getProduct)
 ProductRoute.get('/Alphabetically', AtoZproductsSorting)
-ProductRoute.get('/AllProduct', getProduct)
 ProductRoute.get('/products/:category', getProductCategoryWise)
 ProductRoute.post('/addProduct', productCreate)
 ProductRoute.delete('/deleteProduct/:id', deleteProduct)

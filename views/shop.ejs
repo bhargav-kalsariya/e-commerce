@@ -639,36 +639,13 @@
                                 <!-- Widget Menu Start -->
                                 <nav>
                                     <ul class="mobile-menu p-0 m-0">
-                                        <li class="menu-item-has-children"><a href="addCategory">Birthday Boqutets</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Aster</a></li>
-                                                <li><a href="#">Aubrieta</a></li>
-                                                <li><a href="#">Basket of Gold</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#">Funeral Flowers</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Cleome</a></li>
-                                                <li><a href="#">Columbine</a></li>
-                                                <li><a href="#">Coneflower</a></li>
-                                                <li><a href="#">Corepsis</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#">Interior Decor</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Calendula</a></li>
-                                                <li><a href="#">Castor Bean</a></li>
-                                                <li><a href="#">Catmint</a></li>
-                                                <li><a href="#">Chives</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#">Custom Orders</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Lily</a></li>
-                                                <li><a href="#">Rose</a></li>
-                                                <li><a href="#">Sunflower</a></li>
-                                            </ul>
-                                        </li>
+                                        <% categories.forEach(function(category) { %>
+                                            <li class="menu-item-has-children">
+                                                <a href="/getproduct">
+                                                    <%= category.name %>
+                                                </a>
+                                            </li>
+                                            <% }); %>
                                     </ul>
                                 </nav>
                                 <!-- Widget Menu End -->

@@ -14,8 +14,9 @@ let productCreate = async (req, res) => {
 let getProduct = async (req, res) => {
     await Product.find().populate('category');
     try {
+        let categories = await Category.find();
         let products = await Product.find();
-        res.render('shop', { products });
+        res.render('shop', { products, categories });
     } catch (error) {
         console.log(error.message);
     }

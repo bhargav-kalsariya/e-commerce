@@ -1,4 +1,5 @@
 const { Category } = require("../models/categorySchema");
+
 let categoriesRender = (req, res) => {
     res.render('category');
 }
@@ -16,8 +17,13 @@ let CategoryCreate = async (req, res) => {
 }
 
 let getCategory = async (req, res) => {
-    let category = await Category.find();
-    res.send(category);
+    try {
+        const categories = await Category.find();
+        res.send(categories);
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        res.status(500).send('Internal Server Error');
+    }
 }
 
 let deleteCategory = async (req, res) => {

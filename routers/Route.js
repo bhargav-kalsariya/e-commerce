@@ -1,10 +1,8 @@
 const { Router } = require('express');
 const Route = Router()
 const Passport = require('passport');
-const SignupModel = require('../models/singupSchema');
 const { authUser } = require('../middleware/authUser');
 const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, indexRender, aboutPageRender, contactPageRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogFAQRender } = require('../controller/userController');
-const { getProduct } = require('../controller/ProductController');
 
 //          pages render routes             //
 

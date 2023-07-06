@@ -512,6 +512,9 @@
                                                         <img src="<%= product.image %>" alt=""
                                                             class="product-image-2 position-absolute w-100 h-100">
                                                     </a>
+                                                    <a href="/deleteProduct/<%= product._id %>">
+                                                        <button type="submit" class="btn">Delete</button>
+                                                    </a>
                                                     <span class="onsale">Sale!</span>
                                                     <div class="add-action d-flex flex-column position-absolute">
                                                         <a href="/compare" title="Compare">
@@ -527,7 +530,9 @@
                                                             <i class="lnr lnr-eye" data-toggle="tooltip"
                                                                 data-placement="left" title="Quick View"></i>
                                                         </a>
+
                                                     </div>
+
                                                 </div>
                                                 <div class="product-content">
                                                     <div class="product-title">
@@ -549,6 +554,7 @@
                                                         <span class="old-price"><del>$70.00</del></span>
                                                     </div>
                                                     <a href="/cart" class="btn product-cart">Add to Cart</a>
+
                                                 </div>
                                                 <div class="product-content-listview">
                                                     <div class="product-title">
@@ -664,7 +670,7 @@
                                 <h3 class="widget-title">Categories</h3>
                                 <div class="sidebar-body">
                                     <ul class="sidebar-list">
-                                        <li><a href="/getProduct">All Product</a></li>
+                                        <li><a href="/shop">All Product</a></li>
                                         <li><a href="#">Best Seller (5)</a></li>
                                         <li><a href="#">Featured (4)</a></li>
                                         <li><a href="#">New Products (6)</a></li>

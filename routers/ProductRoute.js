@@ -8,7 +8,7 @@ ProductRoute.get('/shop', getProduct)
 ProductRoute.get('/Alphabetically', AtoZproductsSorting)
 ProductRoute.get('/products/:category', getProductCategoryWise)
 ProductRoute.post('/addProduct', productCreate)
-ProductRoute.delete('/deleteProduct/:id', deleteProduct)
+ProductRoute.get('/deleteProduct/:product', deleteProduct)
 ProductRoute.patch('/updateProduct/:id', updateProduct)
 
 module.exports = ProductRoute;

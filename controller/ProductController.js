@@ -43,10 +43,9 @@ let AtoZproductsSorting = async (req, res) => {
 }
 
 let deleteProduct = async (req, res) => {
-    let { id } = req.params;
-    let deleteProduct = await Product.findByIdAndDelete(id);
-    res.send('Delete Product ' + deleteProduct);
-    console.log('Product deleted successfully')
+    let { product } = req.params;
+    await Product.findByIdAndDelete(product);
+    res.redirect('/shop');
 }
 
 let updateProduct = async (req, res) => {

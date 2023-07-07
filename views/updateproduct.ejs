@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- CSS
+        ============================================ -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/font.awesome.min.css">
+    <!-- Linear Icons CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/linearicons.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css">
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
+    <!-- Jquery ui CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/jquery-ui.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/nice-select.min.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <body>
+
+        <h1>Update Product</h1>
+        <form action="/updateProduct/<%= products.id  %>" method="post">
+
+            Product Image : <input type="text" name="image" id="" value="<%= products.image  %>"><br><br>
+            Product Name : <input type="text" name="name" id="" value="<%= products.name  %>"><br><br>
+            Product Prize : <input type="text" name="price" id="" value="<%= products.price  %>"><br><br>
+            Product Description : <input type="text" name="description" id=""
+                value="<%= products.description  %>"><br><br>
+            Product Rating : <input type="number" name="rating" id="" value="<%= products.rating  %>"><br><br>
+            Product Featured : <input type="text" name="isFeatured" id="" value="<%= products.isFeatured  %>"><br><br>
+            product Create Date : <input type="date" name="dateCreated" id=""
+                value="<%= products.dateCreated  %>"><br><br>
+            Product Category : <select name="category" id="selectCategory" n></select><br><br>
+            CountInStock : <input type="text" name="countInStock" id="" value="<%= products.countInStock  %>"><br><br>
+            Submit Product Here : <input type="submit" name="" id="" value="submit">
+
+        </form>
+
+        <script>
+
+            let selectCategory = async () => {
+                let reqCategory = await fetch('http://localhost:4545/getCategory')
+                let resCategory = await reqCategory.json()
+                let category = ``;
+                for (let i = 0; i < resCategory.length; i++) {
+                    let categoryId = resCategory[i]._id;
+                    let categoryName = resCategory[i].name;
+                    category += `<option value="${categoryId}">${categoryName}</option>`;
+                }
+                document.getElementById('selectCategory').innerHTML = category;
+                console.log(category);
+            }
+            selectCategory();
+
+        </script>
+    </body>
+
+</html>

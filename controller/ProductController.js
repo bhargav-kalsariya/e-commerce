@@ -1,18 +1,22 @@
 const { Category } = require("../models/categorySchema")
 const { Product } = require("../models/productSchema")
 
-let productsPageRender = (req, res) => {
-    res.render('products')
+let productsPageRender = async (req, res) => {
+
+    let products = await Product.find();
+    res.render('products', { products });
+
 }
 
 let productCreate = async (req, res) => {
-    let CreateProduct = await Product.create(req.body);
-    console.log(CreateProduct);
+
+    await Product.create(req.body);
     res.redirect('/shop');
+
 }
 
 let getProduct = async (req, res) => {
-    // await Product.find().populate('category');
+
     try {
         let categories = await Category.find();
         let products = await Product.find();
@@ -20,6 +24,7 @@ let getProduct = async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
+
 }
 let getProductCategoryWise = async (req, res) => {
 
@@ -34,6 +39,7 @@ let getProductCategoryWise = async (req, res) => {
         console.error('Error fetching products:', error);
         res.status(500).send('Internal Server Error');
     }
+
 };
 
 
@@ -43,16 +49,31 @@ let AtoZproductsSorting = async (req, res) => {
 }
 
 let deleteProduct = async (req, res) => {
+
     let { product } = req.params;
     await Product.findByIdAndDelete(product);
     res.redirect('/shop');
+
 }
 
 let updateProduct = async (req, res) => {
-    let { id } = req.params;
-    let updateProduct = await Product.findByIdAndUpdate(id, req.body)
-    res.send('Update Product ' + updateProduct);
-    console.log('Product Updated successfully');
-}
 
-module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, AtoZproductsSorting, getProductCategoryWise }
+    let { product } = req.params;
+    try {
+        const products = await Product.findById(product);
+        res.render('updateproduct', { products });
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        res.status(500).send('Internal Server Error');
+    }
+
+}
+let postUpdatedProduct = async (req, res) => {
+
+    let { product } = req.params;
+    await Product.findByIdAndUpdate(product, req.body);
+    res.redirect('/shop');
+
+};
+
+module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, AtoZproductsSorting, getProductCategoryWise, postUpdatedProduct }

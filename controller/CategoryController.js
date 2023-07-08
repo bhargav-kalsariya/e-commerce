@@ -7,9 +7,8 @@ let categoriesRender = (req, res) => {
 let CategoryCreate = async (req, res) => {
     let categories = await Category.findOne({ name: req.body.name });
     if (!categories) {
-        let category = await Category.create(req.body);
-        res.send(category);
-        console.log('category created successfully');
+        await Category.create(req.body);
+        res.redirect('/shop');
     }
     else {
         res.send('category already exists')

@@ -643,19 +643,30 @@
                             </div>
                             <div class="widget-list widget-mb-1">
                                 <h3 class="widget-title">Menu Categories <a href="/addCategory">
-                                        <i class="lnr lnr-file-add mx-2" title="add category"></i></a>
+                                        <i class="lnr lnr-file-add mx-2 text-bg-danger fw-bold p-1 rounded"
+                                            title="add category"></i></a>
                                 </h3>
                                 <!-- Widget Menu Start -->
                                 <nav>
-                                    <ul class="mobile-menu p-0 m-0">
-                                        <% categories.forEach(function(category) { %>
-                                            <li class="menu-item-has-children">
-                                                <a href="/productsCategory/<%= category.id  %>">
-                                                    <%= category.name %>
-                                                </a>
-                                            </li>
-                                            <% }); %>
-                                    </ul>
+                                    <% if (categories.length===0) { %>
+                                            <h4>No Category Available</h4>
+                                        <% } else { %>
+                                        <ul class="mobile-menu p-0 m-0">
+                                            <% categories.forEach(function(category) { %>
+                                                
+                                                <li class="menu-item-has-children d-flex justify-content-between">
+                                                    <a href="/productsCategory/<%= category.id  %>">
+                                                        <%= category.name %>
+                                                    </a>
+                                                    <a class="list-icon" href="/deleteCategory/<%= category.id %>"
+                                                        title="Add To Wishlist">
+                                                        <i class="lnr lnr-trash" data-toggle="tooltip" data-placement="top"
+                                                            title="Wishlist"></i>
+                                                    </a>
+                                                </li>
+                                                <% }); %>
+                                        </ul>
+                                      <% } %>
                                 </nav>
                                 <!-- Widget Menu End -->
                             </div>

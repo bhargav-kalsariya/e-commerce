@@ -27,9 +27,8 @@ let getCategory = async (req, res) => {
 
 let deleteCategory = async (req, res) => {
     let { id } = req.params;
-    let deleteCategory = await Category.findByIdAndDelete(id);
-    res.send('Delete Category' + deleteCategory);
-    console.log('Category successfully deleted')
+    await Category.findByIdAndDelete(id);
+    res.redirect('/shop');
 }
 
 let updateCategory = async (req, res) => {

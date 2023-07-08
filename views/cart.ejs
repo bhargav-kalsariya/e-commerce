@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from htmldemo.net/flosun/flosun//cart by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Dec 2022 05:03:26 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -39,7 +40,7 @@
 
 <body>
 
- 
+
 
     <!-- Header Area Start Here -->
     <header class="main-header-area">
@@ -201,8 +202,10 @@
                                             <h5>$166.00</h5>
                                         </div>
                                         <div class="cart-links d-flex justify-content-between">
-                                            <a class="btn product-cart button-icon flosun-button dark-btn" href="/cart">View cart</a>
-                                            <a class="btn flosun-button secondary-btn rounded-0" href="/checkout">Checkout</a>
+                                            <a class="btn product-cart button-icon flosun-button dark-btn"
+                                                href="/cart">View cart</a>
+                                            <a class="btn flosun-button secondary-btn rounded-0"
+                                                href="/checkout">Checkout</a>
                                         </div>
                                     </div>
                                 </li>
@@ -358,9 +361,11 @@
                                 </li>
                             </ul>
                             <div class="widget-social">
-                                <a class="facebook-color-bg" title="Facebook-f" href="#"><i class="fa fa-facebook-f"></i></a>
+                                <a class="facebook-color-bg" title="Facebook-f" href="#"><i
+                                        class="fa fa-facebook-f"></i></a>
                                 <a class="twitter-color-bg" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                <a class="linkedin-color-bg" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                                <a class="linkedin-color-bg" title="Linkedin" href="#"><i
+                                        class="fa fa-linkedin"></i></a>
                                 <a class="youtube-color-bg" title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
                                 <a class="vimeo-color-bg" title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a>
                             </div>
@@ -383,7 +388,12 @@
                         <ul class="menu-top-menu">
                             <li><a href="/about-us">About Us</a></li>
                         </ul>
-                        <p class="desc-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="desc-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. <br> Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br> Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                            anim id est laborum.</p>
                         <div class="switcher">
                             <div class="language">
                                 <span class="switcher-title">Language: </span>
@@ -423,9 +433,11 @@
                                 </li>
                             </ul>
                             <div class="widget-social">
-                                <a class="facebook-color-bg" title="Facebook-f" href="#"><i class="fa fa-facebook-f"></i></a>
+                                <a class="facebook-color-bg" title="Facebook-f" href="#"><i
+                                        class="fa fa-facebook-f"></i></a>
                                 <a class="twitter-color-bg" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                <a class="linkedin-color-bg" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                                <a class="linkedin-color-bg" title="Linkedin" href="#"><i
+                                        class="fa fa-linkedin"></i></a>
                                 <a class="youtube-color-bg" title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
                                 <a class="vimeo-color-bg" title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a>
                             </div>
@@ -474,78 +486,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/product/small-size/1.jpg" alt="Product" /></a></td>
-                                    <td class="pro-title"><a href="#">Pearly Everlasting <br> s / green</a></td>
-                                    <td class="pro-price"><span>$295.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="quantity">
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="0" type="text">
-                                                <div class="dec qtybutton">-</div>
-                                                <div class="inc qtybutton">+</div>
-                                                <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                                <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
+                                <% products.forEach((product)=>{ %>
+                                    <tr>
+                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid fixed-hight"
+                                                    src="<%= product.image  %>" alt="Product" /></a>
+                                        </td>
+                                        <td class="pro-title"><a><%= product.name  %></td>
+                                        <td class="pro-price"><span><%= product.price  %></span></td>
+                                        <td class="pro-quantity">
+                                            <div class="quantity">
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" value="1" type="text">
+                                                    <div class="dec qtybutton">-</div>
+                                                    <div class="inc qtybutton">+</div>
+                                                    <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
+                                                    <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="pro-subtotal"><span>$295.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/product/small-size/2.jpg" alt="Product" /></a></td>
-                                    <td class="pro-title"><a href="#">Jack in the Pulpit <br> red</a></td>
-                                    <td class="pro-price"><span>$275.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="quantity">
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="0" type="text">
-                                                <div class="dec qtybutton">-</div>
-                                                <div class="inc qtybutton">+</div>
-                                                <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                                <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="pro-subtotal"><span>$550.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/product/small-size/3.jpg" alt="Product" /></a></td>
-                                    <td class="pro-title"><a href="#">Glory of the Snow <br> s</a></td>
-                                    <td class="pro-price"><span>$295.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="quantity">
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="0" type="text">
-                                                <div class="dec qtybutton">-</div>
-                                                <div class="inc qtybutton">+</div>
-                                                <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                                <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="pro-subtotal"><span>$295.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/product/small-size/4.jpg" alt="Product" /></a></td>
-                                    <td class="pro-title"><a href="#">Rose bouquet white</a></td>
-                                    <td class="pro-price"><span>$110.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="quantity">
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="2" type="text">
-                                                <div class="dec qtybutton">-</div>
-                                                <div class="inc qtybutton">+</div>
-                                                <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                                <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="pro-subtotal"><span>$110.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                                </tr>
+                                        </td>
+                                        <td class="pro-subtotal"><span><%= product.price %></span></td>
+                                        <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
+                                    </tr>
+                                    <% }) %>
+
                             </tbody>
                         </table>
                     </div>
@@ -586,7 +549,8 @@
                                 </table>
                             </div>
                         </div>
-                        <a href="/checkout" class="btn flosun-button primary-btn rounded-0 black-btn w-100">Proceed To Checkout</a>
+                        <a href="/checkout" class="btn flosun-button primary-btn rounded-0 black-btn w-100">Proceed To
+                            Checkout</a>
                     </div>
                 </div>
             </div>
@@ -605,7 +569,8 @@
                                     <img src="assets/images/logo/logo-footer.png" alt="Logo Image">
                                 </a>
                             </div>
-                            <p class="desc-content">Lorem Khaled Ipsum is a major key to success. To be successful you’ve got to work hard you’ve got to make it.</p>
+                            <p class="desc-content">Lorem Khaled Ipsum is a major key to success. To be successful
+                                you’ve got to work hard you’ve got to make it.</p>
                             <div class="social-links">
                                 <ul class="d-flex">
                                     <li>
@@ -677,7 +642,8 @@
                         <div class="single-footer-widget">
                             <h2 class="widget-title">See Information</h2>
                             <div class="widget-body">
-                                <address>123, ABC, Road ##, Main City, Your address goes here.<br>Phone: 01234 567 890<br>Email: https://example.com</address>
+                                <address>123, ABC, Road ##, Main City, Your address goes here.<br>Phone: 01234 567
+                                    890<br>Email: https://example.com</address>
                             </div>
                         </div>
                     </div>
@@ -689,7 +655,10 @@
                 <div class="row">
                     <div class="col-12 text-center col-custom">
                         <div class="copyright-content">
-                            <p>Copyright © 2021 <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a> | Built with&nbsp;<strong>FloSun</strong>&nbsp;by <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.</p>
+                            <p>Copyright © 2021 <a href="https://hasthemes.com/"
+                                    title="https://hasthemes.com/">HasThemes</a> | Built
+                                with&nbsp;<strong>FloSun</strong>&nbsp;by <a href="https://hasthemes.com/"
+                                    title="https://hasthemes.com/">HasThemes</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -733,4 +702,5 @@
 
 
 <!-- Mirrored from htmldemo.net/flosun/flosun//cart by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Dec 2022 05:03:26 GMT -->
+
 </html>

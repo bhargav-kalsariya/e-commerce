@@ -7412,3 +7412,11 @@ mark {
   height: 180px !important;
   object-fit: cover;
 }
+.swiper-slide .fixed-hight{
+  height: 480px;
+  object-fit: cover;
+}
+tr .fixed-hight{
+  height: 150px;
+  object-fit: cover;
+}

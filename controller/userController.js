@@ -99,9 +99,7 @@ let ShopListRightSideRender = (req, res) => {
 let ShopFullWidthRender = (req, res) => {
     res.render('shop-fullwidth')
 }
-let ProductsRender = (req, res) => {
-    res.render('product-details')
-}
+
 let variableProductsRender = (req, res) => {
     res.render('variable-product-details')
 }
@@ -120,8 +118,9 @@ let Error404Render = (req, res) => {
 let ComparePagesRender = (req, res) => {
     res.render('compare')
 }
-let CartPageRender = (req, res) => {
-    res.render('cart')
+let CartPageRender = async (req, res) => {
+    let products = await Product.find();
+    res.render('cart', { products });
 }
 let CheckoutPageRender = (req, res) => {
     res.render('checkout')
@@ -160,4 +159,4 @@ let BlogFAQRender = (req, res) => {
     res.render('frequently-questions')
 }
 
-module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, indexRender, aboutPageRender, contactPageRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, ProductsRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender }
+module.exports = { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, indexRender, aboutPageRender, contactPageRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender }

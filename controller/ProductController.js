@@ -57,7 +57,7 @@ let getProductCategoryWise = async (req, res) => {
 
 let AtoZproductsSorting = async (req, res) => {
 
-    let AtoZproductsSorting = await Product.find({ order: [['name', 'ASC']] });
+    let AtoZproductsSorting = await Product.find().sort({ name: 1 }).toArray();
     res.render('shop', { AtoZproductsSorting })
 }
 

@@ -485,7 +485,6 @@
                                 <div class="form-group">
                                     <select class="form-control nice-select w-100" name="sortBy">
                                         <option value="alphabetically">Alphabetically, A-Z</option>
-                                        <option value="popularity">Sort by popularity</option>
                                         <option value="newness">Sort by newness</option>
                                         <option value="lowToHigh">Sort by price: low to high</option>
                                         <option value="highToLow">Sort by price: high to low</option>
@@ -497,7 +496,7 @@
                     </div>
                     <!--shop toolbar end-->
                     <!-- Shop Wrapper Start -->
-                    <% if (products.length===0) { %>
+                    <% if (sortedProducts.length===0) { %>
                         <h1 class="no-products">No products available.
                             <a href="/addProduct">
                                 <h3 class="text-bg-danger p-2 rounded mx-2">Create Product</h3>
@@ -508,7 +507,7 @@
                                 <a href="/addProduct" class="d-flex justify-content-end">
                                     <h3 class="text-bg-danger px-2 py-1 fs-6 rounded mx-2 ">Create Product</h3>
                                 </a>
-                                <% products.forEach((product)=>{ %>
+                                <% sortedProducts.forEach((product)=>{ %>
                                     <div class="col-md-6 col-sm-6 col-lg-4 col-custom product-area">
                                         <div class="product-item">
                                             <div class="single-product position-relative mr-0 ml-0">

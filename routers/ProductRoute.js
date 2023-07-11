@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { authUser } = require('../middleware/authUser');
-const { productsPageRender, getProduct, productCreate, deleteProduct, updateProduct, getProductCategoryWise, postUpdatedProduct, ProductsRender, sortProducts } = require('../controller/ProductController');
+const { productsPageRender, getProduct, productCreate, deleteProduct, updateProduct, getProductCategoryWise, postUpdatedProduct, ProductsRender } = require('../controller/ProductController');
 const ProductRoute = Router();
 
 // add product //
@@ -8,14 +8,11 @@ const ProductRoute = Router();
 ProductRoute.get('/addProduct', productsPageRender)
 ProductRoute.post('/addProduct', productCreate)
 
-// get product //
+// get product // sortings //
 
 ProductRoute.get('/shop', getProduct)
 ProductRoute.get('/products/:product', ProductsRender)
 
-// sorting //
-
-ProductRoute.get('/sort-products', sortProducts)
 
 // get product category wise //
 

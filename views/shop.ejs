@@ -481,11 +481,10 @@
                                     class="fa fa-th-list"></i></button>
                         </div>
                         <div class="shop-select">
-                            <form class="d-flex flex-row w-100" action="/sort-products" method="get">
+                            <form class="d-flex flex-row w-100" action="/shop" method="get">
                                 <div class="form-group">
                                     <select class="form-control nice-select w-100" name="sortBy">
                                         <option value="alphabetically">Alphabetically, A-Z</option>
-                                        <option value="popularity">Sort by popularity</option>
                                         <option value="newness">Sort by newness</option>
                                         <option value="lowToHigh">Sort by price: low to high</option>
                                         <option value="highToLow">Sort by price: high to low</option>
@@ -505,7 +504,7 @@
                         </h1>
                         <% } else { %>
                             <div class="row shop_wrapper grid_3">
-                                <a href="/addProduct" class="d-flex justify-content-end">
+                                <a href="/addProduct" class="d-flex justify-content-end" title="create product">
                                     <h3 class="text-bg-danger px-2 py-1 fs-6 rounded mx-2 ">Create Product</h3>
                                 </a>
                                 <% products.forEach((product)=>{ %>
@@ -575,7 +574,7 @@
                                                     </div>
                                                     <div class="price-box">
                                                         <span class="regular-price ">
-                                                            <%= product.price %>
+                                                            <%= product.price %>$
                                                         </span>
                                                         <span class="old-price"><del>$70.00</del></span>
                                                     </div>
@@ -663,9 +662,9 @@
                                                             <%= category.name %>
                                                         </a>
                                                         <a class="list-icon" href="/deleteCategory/<%= category.id %>"
-                                                            title="Add To Wishlist">
+                                                            title="deleteCategory">
                                                             <i class="lnr lnr-trash" data-toggle="tooltip"
-                                                                data-placement="top" title="Wishlist"></i>
+                                                                data-placement="top" title="deleteCategory"></i>
                                                         </a>
                                                     </li>
                                                     <% }); %>
@@ -690,7 +689,7 @@
                                     <ul class="sidebar-list">
                                         <li><a href="/shop">All Product</a></li>
                                         <li><a href="#">Best Seller (5)</a></li>
-                                        <li><a href="#">Featured (4)</a></li>
+                                        <li><a href="/featuredProducts">Featured</a></li>
                                         <li><a href="#">New Products (6)</a></li>
                                     </ul>
                                 </div>

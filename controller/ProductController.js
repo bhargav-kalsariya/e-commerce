@@ -18,11 +18,30 @@ let productCreate = async (req, res) => {
 let getProduct = async (req, res) => {
 
     try {
+
+        let sortBy = req.query.sortBy;
         let categories = await Category.find();
         let products = await Product.find();
+
+        if (sortBy === 'alphabetically') {
+            products.sort((a, b) => a.name.localeCompare(b.name));
+        }
+        else if (sortBy === 'lowToHigh') {
+            products.sort((a, b) => Number(a.price) - Number(b.price));
+        }
+        else if (sortBy === 'highToLow') {
+            products.sort((a, b) => Number(b.price) - Number(a.price));
+        }
+        else if (sortBy === 'newness') {
+            products.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
+        }
+
         res.render('shop', { products, categories });
+
     } catch (error) {
+
         console.log(error.message);
+
     }
 
 }
@@ -82,31 +101,5 @@ let postUpdatedProduct = async (req, res) => {
 
 };
 
-// sorting product //
 
-let sortProducts = async (req, res) => {
-
-    const categories = await Category.find();
-    const products = await Product.find();
-
-    let sortBy = req.query.sortBy;
-    let sortedProducts = [...products];
-
-    if (sortBy === 'alphabetically') {
-        sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    else if (sortBy === 'lowToHigh') {
-        sortedProducts.sort((a, b) => Number(a.price) - Number(b.price));
-    }
-    else if (sortBy === 'highToLow') {
-        sortedProducts.sort((a, b) => Number(b.price) - Number(a.price));
-    }
-    else if (sortBy === 'newness') {
-        sortedProducts.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
-    }
-    res.render('sorted-shop', { sortedProducts, categories });
-
-};
-
-
-module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, getProductCategoryWise, postUpdatedProduct, ProductsRender, sortProducts };
+module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, getProductCategoryWise, postUpdatedProduct, ProductsRender };

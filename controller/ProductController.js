@@ -11,11 +11,12 @@ let productsPageRender = async (req, res) => {
 let productCreate = async (req, res) => {
 
     let { name, description, price, dateCreated, category, countInStock, rating, IsFeatured } = req.body;
-    let productsImages = req.file ? req.file.path : '';
+    let productsImages = req.file.path;
     const products = new Product({
         image: productsImages, name, description, price, dateCreated, category, countInStock, rating, IsFeatured
     })
     await products.save();
+    console.log(products, productsImages);
     res.redirect('/shop');
 
 }

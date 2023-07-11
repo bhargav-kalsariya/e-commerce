@@ -15,7 +15,7 @@ const flash = require('connect-flash');
 require("dotenv").config();
 
 // Module use for access modules
-app.use(express.static('uploads'));
+
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(express.static('public'))

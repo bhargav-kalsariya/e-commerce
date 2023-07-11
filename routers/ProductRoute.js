@@ -2,11 +2,21 @@ const { Router } = require('express');
 const { authUser } = require('../middleware/authUser');
 const { productsPageRender, getProduct, productCreate, deleteProduct, updateProduct, getProductCategoryWise, postUpdatedProduct, ProductsRender } = require('../controller/ProductController');
 const ProductRoute = Router();
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        return cb(null, './public/assets/images/productsImages');
+    },
+    filename: (req, file, cb) => {
+        return cb(null, `${Date.now()}-${file.originalname}`);
+    }
+})
+const upload = multer({ storage: storage });
 
 // add product //
 
 ProductRoute.get('/addProduct', productsPageRender)
-ProductRoute.post('/addProduct', productCreate)
+ProductRoute.post('/addProduct', upload.single('image'), productCreate)
 
 // get product // sortings //
 

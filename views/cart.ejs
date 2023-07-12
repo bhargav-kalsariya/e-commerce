@@ -489,10 +489,15 @@
                                 <% products.forEach((product)=>{ %>
                                     <tr>
                                         <td class="pro-thumbnail"><a href="#"><img class="img-fluid fixed-hight"
-                                                    src="<%= product.image  %>" alt="Product" /></a>
+                                                    src="/assets/productImage/<%= product.image  %>"
+                                                    alt="Product" /></a>
                                         </td>
-                                        <td class="pro-title"><a><%= product.name  %></td>
-                                        <td class="pro-price"><span><%= product.price  %></span></td>
+                                        <td class="pro-title"><a>
+                                                <%= product.name %>
+                                        </td>
+                                        <td class="pro-price"><span>
+                                                <%= product.price %>$
+                                            </span></td>
                                         <td class="pro-quantity">
                                             <div class="quantity">
                                                 <div class="cart-plus-minus">
@@ -504,7 +509,9 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="pro-subtotal"><span><%= product.price %></span></td>
+                                        <td class="pro-subtotal"><span>
+                                                <%= product.price %>
+                                            </span></td>
                                         <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
                                     </tr>
                                     <% }) %>

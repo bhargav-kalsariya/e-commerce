@@ -5,7 +5,7 @@ const ProductRoute = Router();
 const multer = require("multer");
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        return cb(null, './public/assets/images/productsImages');
+        return cb(null, './public/assets/productImage');
     },
     filename: (req, file, cb) => {
         return cb(null, `${Date.now()}-${file.originalname}`);

@@ -14,7 +14,7 @@
     <form action="/addProduct" method="post" enctype="multipart/form-data">
 
         Product Image : <input type="file" name="image" id="image"><br><br>
-        Product Name : <input type="text" name="name" id="" ><br><br>
+        Product Name : <input type="text" name="name" id=""><br><br>
         Product Prize : <input type="text" name="price" id=""><br><br>
         Product Description : <input type="text" name="description" id=""><br><br>
         Product Rating : <input type="number" name="rating" id=""><br><br>
@@ -29,20 +29,26 @@
     <script>
 
         let selectCategory = async () => {
+
             let reqCategory = await fetch('http://localhost:4545/getCategory');
-            let resCategory = await reqCategory.json()
+            let resCategory = await reqCategory.json();
             let category = ``;
+
             for (let i = 0; i < resCategory.length; i++) {
                 let categoryId = resCategory[i]._id;
                 let categoryName = resCategory[i].name;
                 category += `<option value="${categoryId}">${categoryName}</option>`;
-            }
+            };
+
             document.getElementById('selectCategory').innerHTML = category;
             console.log(category);
+
         }
+
         selectCategory();
 
     </script>
+
 </body>
 
 </html>

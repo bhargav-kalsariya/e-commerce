@@ -1,50 +1,45 @@
 const { Router } = require('express');
-const Route = Router()
-const Passport = require('passport');
 const { authUser } = require('../middleware/authUser');
-const { userSignup, userUpdate, userDelete, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, indexRender, aboutPageRender, contactPageRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogFAQRender } = require('../controller/userController');
-const { getProductCategoryWise } = require('../controller/ProductController');
+
+let Route = Router();
+let Passport = require('passport');
+let userController = require('../controller/userController');
 
 //          pages render routes             //
 
-Route.get('/', indexRender);
-Route.get('/signup', userSignupRender);
-Route.get('/login', userLoginRender);
-Route.get('/about-us', aboutPageRender);
-Route.get('/contact-us', contactPageRender);
-Route.get('/profile', authUser, UserProfileRender);
-Route.get('/logout', userLogoutRender);
-Route.get('/blog', blogPageRender);
-Route.get('/shop-right-sidebar', ShopRightSideRender)
-Route.get('/shop-list-left-sidebar', ShopListLeftSideRender)
-Route.get('/shop-list-right-sidebar', ShopListRightSideRender)
-Route.get('/shop-full-width', ShopFullWidthRender)
-Route.get('/variable-products', variableProductsRender)
-Route.get('/external-products', ExternalProductsRender)
-Route.get('/gallery-products', GalleryProductsRender)
-Route.get('/countdown-products', CountdownProductsRender)
-Route.get('/error-404', Error404Render)
-Route.get('/compare', ComparePagesRender)
-Route.get('/cart', CartPageRender)
-Route.get('/checkout', authUser, CheckoutPageRender)
-Route.get('/wishlist', WishlistPageRender)
-Route.get('/blog-list-right', BlogListRightRender)
-Route.get('/blog-list-fullwidth', BlogListFullwidthRender)
-Route.get('/blog-grid', BlogGridRender)
-Route.get('/blog-grid-right', BlogGridRightRender)
-Route.get('/blog-grid-fullwidth', BlogGridFullwidthRender)
-Route.get('/blog-details', BlogDetailsRender)
-Route.get('/blog-details-fullwidth', BlogGridFullwidthRender)
-Route.get('/FAQ', BlogFAQRender)
+Route.get('/', userController.indexRender);
+Route.get('/signup', userController.userSignupRender);
+Route.get('/login', userController.userLoginRender);
+Route.get('/about-us', userController.aboutPageRender);
+Route.get('/contact-us', userController.contactPageRender);
+Route.get('/profile', authUser, userController.UserProfileRender);
+Route.get('/logout', userController.userLogoutRender);
+Route.get('/blog', userController.blogPageRender);
+Route.get('/shop-right-sidebar', userController.ShopRightSideRender);
+Route.get('/shop-list-left-sidebar', userController.ShopListLeftSideRender);
+Route.get('/shop-list-right-sidebar', userController.ShopListRightSideRender);
+Route.get('/shop-full-width', userController.ShopFullWidthRender);
+Route.get('/variable-products', userController.variableProductsRender);
+Route.get('/external-products', userController.ExternalProductsRender);
+Route.get('/gallery-products', userController.GalleryProductsRender);
+Route.get('/countdown-products', userController.CountdownProductsRender);
+Route.get('/error-404', userController.Error404Render);
+Route.get('/compare', userController.ComparePagesRender);
+Route.get('/cart', userController.CartPageRender);
+Route.get('/checkout', authUser, userController.CheckoutPageRender);
+Route.get('/wishlist', userController.WishlistPageRender);
+Route.get('/blog-list-right', userController.BlogListRightRender);
+Route.get('/blog-list-fullwidth', userController.BlogListFullwidthRender);
+Route.get('/blog-grid', userController.BlogGridRender);
+Route.get('/blog-grid-right', userController.BlogGridRightRender);
+Route.get('/blog-grid-fullwidth', userController.BlogGridFullwidthRender);
+Route.get('/blog-details', userController.BlogDetailsRender);
+Route.get('/blog-details-fullwidth', userController.BlogGridFullwidthRender);
+Route.get('/FAQ', userController.BlogFAQRender);
 
 //           post page route               //
 
-Route.post('/signup', userSignup);
-Route.post('/login', Passport.authenticate('local'), userLogin);
+Route.post('/signup', userController.userSignup);
+Route.post('/login', Passport.authenticate('local'), userController.userLogin);
 
-//        update and delete  page route       //
-
-Route.patch('/update/:id', userUpdate);
-Route.delete('/delete/:id', userDelete)
-
-module.exports = Route
+module.exports = Route;

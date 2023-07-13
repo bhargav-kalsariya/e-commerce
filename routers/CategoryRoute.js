@@ -1,13 +1,25 @@
 const { Router } = require('express');
 const { authUser } = require('../middleware/authUser');
-const { categoriesRender, getCategory, CategoryCreate, deleteCategory, updateCategory } = require('../controller/CategoryController');
+
+let CategoryController = require('../controller/CategoryController');
 let CategoryRoute = Router();
 
+// add category //
 
-CategoryRoute.get('/addCategory', categoriesRender);
-CategoryRoute.get('/getCategory', getCategory)
-CategoryRoute.post('/addCategory', CategoryCreate);
-CategoryRoute.get('/deleteCategory/:id', deleteCategory)
-CategoryRoute.patch('/updateCategory/:id', updateCategory)
+CategoryRoute.get('/addCategory', CategoryController.categoriesRender);
+CategoryRoute.post('/addCategory', CategoryController.CategoryCreate);
+
+// get category //
+
+CategoryRoute.get('/getCategory', CategoryController.getCategory);
+
+// update category //
+
+CategoryRoute.patch('/updateCategory/:id', CategoryController.updateCategory);
+
+// delete category //
+
+CategoryRoute.get('/deleteCategory/:id', CategoryController.deleteCategory);
+
 
 module.exports = CategoryRoute;

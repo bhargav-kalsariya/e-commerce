@@ -35,9 +35,10 @@
     <body>
 
         <h1>Update Product</h1>
-        <form action="/updateProduct/<%= products.id  %>" method="post">
 
-            Product Image : <input type="file" name="image" id="" value="<%= products.image  %>"><br><br>
+        <form action="/updateProduct/<%= products.id  %>" method="post" enctype="multipart/form-data">
+
+            Product Image : <input type="file" name="image" id=""><br><br>
             Product Name : <input type="text" name="name" id="" value="<%= products.name  %>"><br><br>
             Product Prize : <input type="text" name="price" id="" value="<%= products.price  %>"><br><br>
             Product Description : <input type="text" name="description" id=""
@@ -55,20 +56,25 @@
         <script>
 
             let selectCategory = async () => {
-                let reqCategory = await fetch('http://localhost:4545/getCategory')
-                let resCategory = await reqCategory.json()
+
+                let reqCategory = await fetch('http://localhost:4545/getCategory');
+                let resCategory = await reqCategory.json();
                 let category = ``;
+
                 for (let i = 0; i < resCategory.length; i++) {
                     let categoryId = resCategory[i]._id;
                     let categoryName = resCategory[i].name;
                     category += `<option value="${categoryId}">${categoryName}</option>`;
-                }
+                };
+
                 document.getElementById('selectCategory').innerHTML = category;
                 console.log(category);
             }
+
             selectCategory();
 
         </script>
+
     </body>
 
 </html>

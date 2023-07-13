@@ -21,10 +21,10 @@ let productCreate = async (req, res) => {
 
     try {
 
-        let { name, description, price, dateCreated, category, countInStock, rating, IsFeatured } = req.body;
+        let { name, description, price, dateCreated, category, countInStock, rating, isFeatured } = req.body;
         let productsImages = req.file.filename;
         let products = new Product({
-            image: productsImages, name, description, price, dateCreated, category, countInStock, rating, IsFeatured
+            image: productsImages, name, description, price, dateCreated, category, countInStock, rating, isFeatured
         });
 
         await products.save();

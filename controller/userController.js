@@ -1,6 +1,5 @@
 const SignupModel = require("../models/singupSchema");
 const bcrypt = require("bcrypt");
-const { Product } = require("../models/productSchema");
 
 //       index page controller          // 
 
@@ -154,13 +153,6 @@ let ComparePagesRender = (req, res) => {
 
 };
 
-let CartPageRender = async (req, res) => {
-
-    let products = await Product.find();
-    res.render('cart', { products });
-
-};
-
 let CheckoutPageRender = (req, res) => {
 
     res.render('checkout');
@@ -229,4 +221,4 @@ let BlogFAQRender = (req, res) => {
 
 };
 
-module.exports = { userSignup, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, indexRender, aboutPageRender, contactPageRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CartPageRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender }
+module.exports = { userSignup, userLogin, UserProfileRender, userLogoutRender, userSignupRender, userLoginRender, indexRender, aboutPageRender, contactPageRender, blogPageRender, ShopRightSideRender, ShopListLeftSideRender, ShopListRightSideRender, ShopFullWidthRender, variableProductsRender, ExternalProductsRender, GalleryProductsRender, CountdownProductsRender, Error404Render, ComparePagesRender, CheckoutPageRender, WishlistPageRender, BlogListRightRender, BlogListFullwidthRender, BlogGridRender, BlogGridRightRender, BlogGridFullwidthRender, BlogDetailsRender, BlogDetailsFullWidthRender, BlogFAQRender }

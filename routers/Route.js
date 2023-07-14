@@ -25,7 +25,6 @@ Route.get('/gallery-products', userController.GalleryProductsRender);
 Route.get('/countdown-products', userController.CountdownProductsRender);
 Route.get('/error-404', userController.Error404Render);
 Route.get('/compare', userController.ComparePagesRender);
-Route.get('/cart', userController.CartPageRender);
 Route.get('/checkout', authUser, userController.CheckoutPageRender);
 Route.get('/wishlist', userController.WishlistPageRender);
 Route.get('/blog-list-right', userController.BlogListRightRender);

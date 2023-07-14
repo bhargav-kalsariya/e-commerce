@@ -27,7 +27,6 @@ ProductRoute.get('/shop', ProductController.getProduct);
 ProductRoute.get('/products/:product', ProductController.ProductsRender);
 ProductRoute.get('/featuredProducts', ProductController.FeaturedProductsRender);
 
-
 // get product category wise //
 
 ProductRoute.get('/productsCategory/:category', ProductController.getProductCategoryWise);
@@ -40,6 +39,11 @@ ProductRoute.post('/updateProduct/:product', upload.single('image'), ProductCont
 // delete product //
 
 ProductRoute.get('/deleteProduct/:product', ProductController.deleteProduct);
+
+// add to cart //
+
+ProductRoute.get('/cart/:productID', authUser, ProductController.cartpagerander);
+
 
 
 module.exports = ProductRoute;

@@ -1,5 +1,6 @@
 const { Category } = require("../models/categorySchema");
 const { Product } = require("../models/productSchema");
+const SignupModel = require("../models/singupSchema");
 
 let productsPageRender = async (req, res) => {
 
@@ -10,7 +11,7 @@ let productsPageRender = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products:', error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -32,7 +33,7 @@ let productCreate = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products:', error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -72,7 +73,7 @@ let getProduct = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products:', error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -90,7 +91,7 @@ let ProductsRender = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products:', error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -108,7 +109,7 @@ let FeaturedProductsRender = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products:', error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -128,7 +129,7 @@ let getProductCategoryWise = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching products:', error);
+        console.error('Error fetching products:', error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -146,7 +147,7 @@ let deleteProduct = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching product:', error);
+        console.error('Error fetching product:', error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -164,7 +165,7 @@ let updateProduct = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching product:', error);
+        console.error('Error fetching product:', error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -186,7 +187,25 @@ let postUpdatedProduct = async (req, res) => {
 
     } catch (error) {
 
-        console.error('Error fetching product:', error);
+        console.error('Error fetching product:', error.message);
+        res.status(500).send('Internal Server Error');
+
+    };
+
+};
+
+let cartpagerander = async (req, res) => {
+
+    let { product } = req.params;
+
+    try {
+
+        let userCart = await Product.find();
+        res.render('cart', { userCart });
+
+    } catch (error) {
+
+        console.error('Error fetching product : ' + error.message);
         res.status(500).send('Internal Server Error');
 
     };
@@ -194,4 +213,4 @@ let postUpdatedProduct = async (req, res) => {
 };
 
 
-module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, getProductCategoryWise, postUpdatedProduct, ProductsRender, FeaturedProductsRender };
+module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, getProductCategoryWise, postUpdatedProduct, ProductsRender, FeaturedProductsRender, cartpagerander };

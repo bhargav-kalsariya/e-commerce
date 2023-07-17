@@ -200,13 +200,46 @@ let cartpagerander = async (req, res) => {
 
     try {
 
-        let userCart = await Product.find();
-        res.render('cart', { userCart });
+        let cartproduct = await Product.findById(product);
+        let data = req.user.cart;
+        let user = req.user;
+
+        if (data == undefined || data.length == 0 || data == null) {
+
+            data.push(cartproduct);
+            await user.save();
+            res.render('cart', { data });
+
+        } else {
+
+            let isProductNew = true;
+
+            for (let ele of data) {
+
+                if (ele._id == product) {
+
+                    console.log(ele._id, product);
+                    isProductNew = false;
+                    break;
+
+                };
+
+            };
+
+            if (isProductNew) {
+                data.push(cartproduct);
+                await user.save();
+            };
+
+            res.render('cart', { data });
+            console.log(data);
+
+        };
 
     } catch (error) {
 
-        console.error('Error fetching product : ' + error.message);
-        res.status(500).send('Internal Server Error');
+        console.error('Error fetching product:', error.message);
+        return res.status(500).send('Internal Server Error');
 
     };
 

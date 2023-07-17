@@ -42,7 +42,7 @@ ProductRoute.get('/deleteProduct/:product', ProductController.deleteProduct);
 
 // add to cart //
 
-ProductRoute.get('/cart/:productID', authUser, ProductController.cartpagerander);
+ProductRoute.get('/cart/:product', authUser, ProductController.cartpagerander);
 
 
 

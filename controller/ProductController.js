@@ -201,20 +201,20 @@ let cartpagerander = async (req, res) => {
     try {
 
         let cartproduct = await Product.findById(product);
-        let data = req.user.cart;
+        let CartData = req.user.cart;
         let user = req.user;
 
-        if (data == undefined || data.length == 0 || data == null) {
+        if (CartData == undefined || CartData.length == 0 || CartData == null) {
 
-            data.push(cartproduct);
+            CartData.push(cartproduct);
             await user.save();
-            res.render('cart', { data });
+            res.render('cart', { CartData });
 
         } else {
 
             let isProductNew = true;
 
-            for (let ele of data) {
+            for (let ele of CartData) {
 
                 if (ele._id == product) {
 
@@ -227,12 +227,13 @@ let cartpagerander = async (req, res) => {
             };
 
             if (isProductNew) {
-                data.push(cartproduct);
+
+                CartData.push(cartproduct);
                 await user.save();
+
             };
 
-            res.render('cart', { data });
-            console.log(data);
+            res.render('cart', { CartData });
 
         };
 

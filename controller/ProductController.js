@@ -234,6 +234,7 @@ let cartpagerander = async (req, res) => {
             };
 
             res.render('cart', { CartData });
+            console.log(CartData);
 
         };
 
@@ -246,5 +247,30 @@ let cartpagerander = async (req, res) => {
 
 };
 
+let deleteCartProduct = async (req, res) => {
 
-module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, getProductCategoryWise, postUpdatedProduct, ProductsRender, FeaturedProductsRender, cartpagerander };
+    let { product } = req.params;
+
+    try {
+
+        let CartData = req.user.cart.findIndex((item) => item._id == product);
+
+        if (CartData != -1) {
+
+            req.user.cart.splice(CartData, 1);
+            req.user.save();
+
+        }
+
+        res.render('cart', { CartData: req.user.cart })
+
+    } catch (error) {
+
+        console.error('Error fetching product:', error.message);
+        res.status(500).send('Internal Server Error');
+
+    };
+
+};
+
+module.exports = { updateProduct, deleteProduct, getProduct, productCreate, productsPageRender, getProductCategoryWise, postUpdatedProduct, ProductsRender, FeaturedProductsRender, cartpagerander, deleteCartProduct };

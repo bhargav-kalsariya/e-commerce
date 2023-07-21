@@ -485,81 +485,96 @@
                                     <th class="pro-remove">Remove</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <% CartData.forEach(cart=>{ %>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid fixed-hight"
-                                                    src="/assets/productImage/<%= cart.image  %>" alt="Product" /></a>
-                                        </td>
-                                        <td class="pro-title"><a>
-                                                <%= cart.name %>
-                                        </td>
-                                        <td class="pro-price"><span>
-                                                <%= cart.price %>$
-                                            </span></td>
-                                        <td class="pro-quantity">
-                                            <div class="quantity">
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="1" type="text">
-                                                    <div class="dec qtybutton">-</div>
-                                                    <div class="inc qtybutton">+</div>
-                                                    <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                                    <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>
-                                                <%= cart.price %>$
-                                            </span></td>
-                                        <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                                    </tr>
-                                    <%}); %>
-                            </tbody>
+                            <% if (CartData.length===0) { %>
+                                <h1 class="no-products ">Your Cart Is Empty. </h1>
+                                <% } else { %>
+
+                                    <% CartData.forEach((product)=>{ %>
+                                        <tbody>
+                                            <% CartData.forEach(cart=>{ %>
+                                                <tr>
+                                                    <td class="pro-thumbnail"><a href="#"><img
+                                                                class="img-fluid fixed-hight"
+                                                                src="/assets/productImage/<%= cart.image  %>"
+                                                                alt="Product" /></a>
+                                                    </td>
+                                                    <td class="pro-title"><a>
+                                                            <%= cart.name %>
+                                                    </td>
+                                                    <td class="pro-price"><span>
+                                                            <%= cart.price %>$
+                                                        </span></td>
+                                                    <td class="pro-quantity">
+                                                        <div class="quantity">
+                                                            <div class="cart-plus-minus">
+                                                                <input class="cart-plus-minus-box" value="1"
+                                                                    type="text">
+                                                                <div class="dec qtybutton">-</div>
+                                                                <div class="inc qtybutton">+</div>
+                                                                <div class="dec qtybutton"><i class="fa fa-minus"></i>
+                                                                </div>
+                                                                <div class="inc qtybutton"><i class="fa fa-plus"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="pro-subtotal"><span>
+                                                            <%= cart.price %>$
+                                                        </span></td>
+                                                    <td class="pro-remove"><a
+                                                            href="/deletecartproduct/<%= cart._id %>"><i
+                                                                class="lnr lnr-trash"></i></a></td>
+                                                </tr>
+                                                <%}); %>
+                                        </tbody>
+                                        <% }); %>
+                    </div>
+                    <% } %>
                         </table>
-                    </div>
-                    <!-- Cart Update Option -->
-                    <div class="cart-update-option d-block d-md-flex justify-content-between">
-                        <div class="apply-coupon-wrapper">
-                            <form action="#" method="post" class=" d-block d-md-flex">
-                                <input type="text" placeholder="Enter Your Coupon Code" required />
-                                <button class="btn flosun-button primary-btn rounded-0 black-btn">Apply Coupon</button>
-                            </form>
-                        </div>
-                        <div class="cart-update mt-sm-16">
-                            <a href="#" class="btn flosun-button primary-btn rounded-0 black-btn">Update Cart</a>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-5 ml-auto col-custom">
-                    <!-- Cart Calculation Area -->
-                    <div class="cart-calculator-wrapper">
-                        <div class="cart-calculate-items">
-                            <h3>Cart Totals</h3>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tr>
-                                        <td>Sub Total</td>
-                                        <td>$230</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shipping</td>
-                                        <td>$70</td>
-                                    </tr>
-                                    <tr class="total">
-                                        <td>Total</td>
-                                        <td class="total-amount">$300</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <a href="/checkout" class="btn flosun-button primary-btn rounded-0 black-btn w-100">Proceed To
-                            Checkout</a>
+                <!-- Cart Update Option -->
+                <div class="cart-update-option d-block d-md-flex justify-content-between">
+                    <div class="apply-coupon-wrapper">
+                        <form action="#" method="post" class=" d-block d-md-flex">
+                            <input type="text" placeholder="Enter Your Coupon Code" required />
+                            <button class="btn flosun-button primary-btn rounded-0 black-btn">Apply Coupon</button>
+                        </form>
+                    </div>
+                    <div class="cart-update mt-sm-16">
+                        <a href="#" class="btn flosun-button primary-btn rounded-0 black-btn">Update Cart</a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-5 ml-auto col-custom">
+                <!-- Cart Calculation Area -->
+                <div class="cart-calculator-wrapper">
+                    <div class="cart-calculate-items">
+                        <h3>Cart Totals</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td>Sub Total</td>
+                                    <td>$230</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>$70</td>
+                                </tr>
+                                <tr class="total">
+                                    <td>Total</td>
+                                    <td class="total-amount">$300</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <a href="/checkout" class="btn flosun-button primary-btn rounded-0 black-btn w-100">Proceed To
+                        Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <!-- cart main wrapper end -->
     <!--Footer Area Start-->

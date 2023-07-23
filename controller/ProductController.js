@@ -204,40 +204,32 @@ let cartpagerander = async (req, res) => {
         let CartData = req.user.cart;
         let user = req.user;
 
-        if (CartData == undefined || CartData.length == 0 || CartData == null) {
+
+        let isProductNew = true;
+
+        for (let ele of CartData) {
+
+            if (ele._id == product) {
+
+                ele.quantity += 1;
+                user.cart = CartData;
+                user.save();
+                console.log(user.cart);
+                isProductNew = false;
+                break;
+
+            };
+
+        };
+
+        if (isProductNew) {
 
             CartData.push(cartproduct);
             await user.save();
-            res.render('cart', { CartData: req.user.cart });
-
-        } else {
-
-            let isProductNew = true;
-
-            for (let ele of CartData) {
-
-                if (ele._id == product) {
-
-                    ele.quantity += 1;
-                    user.save();
-                    console.log(user.cart);
-                    isProductNew = false;
-                    break;
-
-                };
-
-            };
-
-            if (isProductNew) {
-
-                CartData.push(cartproduct);
-                await user.save();
-
-            };
-
-            res.render('cart', { CartData });
 
         };
+
+        res.render('cart', { CartData });
 
     } catch (error) {
 

@@ -489,45 +489,41 @@
                                 <h1 class="no-products ">Your Cart Is Empty. </h1>
                                 <% } else { %>
 
-                                    <% CartData.forEach((product)=>{ %>
-                                        <tbody>
-                                            <% CartData.forEach(cart=>{ %>
-                                                <tr>
-                                                    <td class="pro-thumbnail"><a href="#"><img
-                                                                class="img-fluid fixed-hight"
-                                                                src="/assets/productImage/<%= cart.image  %>"
-                                                                alt="Product" /></a>
-                                                    </td>
-                                                    <td class="pro-title"><a>
-                                                            <%= cart.name %>
-                                                    </td>
-                                                    <td class="pro-price"><span>
-                                                            <%= cart.price %>$
-                                                        </span></td>
-                                                    <td class="pro-quantity">
-                                                        <div class="quantity">
-                                                            <div class="cart-plus-minus">
-                                                                <input class="cart-plus-minus-box" value="1"
-                                                                    type="text">
-                                                                <div class="dec qtybutton">-</div>
-                                                                <div class="inc qtybutton">+</div>
-                                                                <div class="dec qtybutton"><i class="fa fa-minus"></i>
-                                                                </div>
-                                                                <div class="inc qtybutton"><i class="fa fa-plus"></i>
-                                                                </div>
+                                    <tbody>
+                                        <% CartData.forEach(cart=>{ %>
+                                            <tr>
+                                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid fixed-hight"
+                                                            src="/assets/productImage/<%= cart.image  %>"
+                                                            alt="Product" /></a>
+                                                </td>
+                                                <td class="pro-title"><a>
+                                                        <%= cart.name %>
+                                                </td>
+                                                <td class="pro-price"><span>
+                                                        <%= cart.price %>$
+                                                    </span></td>
+                                                <td class="pro-quantity">
+                                                    <div class="quantity">
+                                                        <div class="cart-plus-minus">
+                                                            <input class="cart-plus-minus-box"
+                                                                value="<%= cart.quantity  %>" type="text">
+                                                            <div class="dec qtybutton">-</div>
+                                                            <div class="inc qtybutton">+</div>
+                                                            <div class="dec qtybutton"><i class="fa fa-minus"></i>
+                                                            </div>
+                                                            <div class="inc qtybutton"><i class="fa fa-plus"></i>
                                                             </div>
                                                         </div>
-                                                    </td>
-                                                    <td class="pro-subtotal"><span>
-                                                            <%= cart.price %>$
-                                                        </span></td>
-                                                    <td class="pro-remove"><a
-                                                            href="/deletecartproduct/<%= cart._id %>"><i
-                                                                class="lnr lnr-trash"></i></a></td>
-                                                </tr>
-                                                <%}); %>
-                                        </tbody>
-                                        <% }); %>
+                                                    </div>
+                                                </td>
+                                                <td class="pro-subtotal"><span>
+                                                        <%= cart.price %>$
+                                                    </span></td>
+                                                <td class="pro-remove"><a href="/deletecartproduct/<%= cart._id %>"><i
+                                                            class="lnr lnr-trash"></i></a></td>
+                                            </tr>
+                                            <%}); %>
+                                    </tbody>
                     </div>
                     <% } %>
                         </table>

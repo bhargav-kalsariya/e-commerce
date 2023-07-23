@@ -22,10 +22,10 @@ let productCreate = async (req, res) => {
 
     try {
 
-        let { name, description, price, dateCreated, category, countInStock, rating, isFeatured } = req.body;
+        let { name, description, price, dateCreated, category, countInStock, rating, isFeatured, quantity } = req.body;
         let productsImages = req.file.filename;
         let products = new Product({
-            image: productsImages, name, description, price, dateCreated, category, countInStock, rating, isFeatured
+            image: productsImages, name, description, price, dateCreated, category, countInStock, rating, isFeatured, quantity
         });
 
         await products.save();
@@ -178,9 +178,9 @@ let postUpdatedProduct = async (req, res) => {
 
     try {
 
-        let { name, description, price, dateCreated, category, countInStock, rating, isFeatured } = req.body;
+        let { name, description, price, dateCreated, category, countInStock, rating, isFeatured, quantity } = req.body;
         let productsImages = req.file.filename;
-        let products = ({ image: productsImages, name, description, price, dateCreated, category, countInStock, rating, isFeatured });
+        let products = ({ image: productsImages, name, description, price, dateCreated, category, countInStock, rating, isFeatured, quantity });
 
         await Product.findByIdAndUpdate(product, products);
         res.redirect('/shop');
@@ -208,7 +208,7 @@ let cartpagerander = async (req, res) => {
 
             CartData.push(cartproduct);
             await user.save();
-            res.render('cart', { CartData });
+            res.render('cart', { CartData: req.user.cart });
 
         } else {
 
@@ -218,7 +218,9 @@ let cartpagerander = async (req, res) => {
 
                 if (ele._id == product) {
 
-                    console.log(ele._id, product);
+                    ele.quantity += 1;
+                    user.save();
+                    console.log(user.cart);
                     isProductNew = false;
                     break;
 
@@ -234,7 +236,6 @@ let cartpagerander = async (req, res) => {
             };
 
             res.render('cart', { CartData });
-            console.log(CartData);
 
         };
 

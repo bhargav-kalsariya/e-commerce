@@ -56,7 +56,8 @@ let userLogin = async (req, res) => {
 
 let UserProfileRender = async (req, res) => {
 
-    res.render('profile');
+    let user = req.user;
+    res.render('profile', { user });
 
 };
 

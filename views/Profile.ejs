@@ -506,8 +506,11 @@
                                         <div class="myaccount-content">
                                             <h3>Dashboard</h3>
                                             <div class="welcome">
-                                                <p>Hello, <strong>Alex Aya</strong> (If Not <strong>Aya !</strong><a
-                                                        href="/logout" class="logout"> Logout</a>)</p>
+                                                <p>Hello, <strong>
+                                                        <%= user.username %>
+                                                    </strong> (If Not <strong>
+                                                        <%= user.username %>
+                                                    </strong><a href="/logout" class="logout"> Logout</a>)</p>
                                             </div>
                                             <p class="mb-0">From your account dashboard. you can easily check & view
                                                 your recent orders, manage your shipping and billing addresses and edit
